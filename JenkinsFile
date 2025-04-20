@@ -20,7 +20,7 @@ pipeline {
                        --reporter-htmlextra-export "newman_results/HTML_TestReport.html"
                         '''
             }
-}
+        }
 
     }
     
@@ -37,7 +37,7 @@ pipeline {
                 keepAll: true,
                 reportDir: '.',
                 reportFiles: 'newman_results/HTML_TestReport.html',
-                reportName: 'Newman HTML Report'
+                reportName: 'HTML_TestReport.html'
             ])
 
             // Archiving an HTML report as an artifact
