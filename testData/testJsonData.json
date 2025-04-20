@@ -323,7 +323,15 @@
         "expectedError": "Password has to be from 8 to 15 characters long",
         "environment": "DEV"
     },
-
+    {
+        "request": "Sign_Up - Password validation - No Digits",
+        "iterationName": "TestName2",
+        "iterationLastName": "TestLastName2",
+        "iterationEmail": "valid@example2.com",
+        "iterationPassword": "NoDigitsHere!",
+        "expectedError": "contain at least one integer",
+        "environment": "DEV"
+    },
     {
         "request": "Sign_Up - Password validation - No Uppercase",
         "iterationName": "TestName",
