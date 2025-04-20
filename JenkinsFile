@@ -26,8 +26,6 @@ pipeline {
     
     post {
         always {
-            // Archiving an HTML report as an artifact
-            archiveArtifacts artifacts: 'newman_results/HTML_TestReport.html,newman_results/JUnit_TestReport', fingerprint: true
             
             // Pablishing of JUnit report
             junit 'newman_results/JUnit_TestReport'
@@ -41,6 +39,9 @@ pipeline {
                 reportFiles: 'newman_results/HTML_TestReport.html',
                 reportName: 'Newman HTML Report'
             ])
+
+            // Archiving an HTML report as an artifact
+            archiveArtifacts artifacts: 'newman_results/HTML_TestReport.html,newman_results/JUnit_TestReport', fingerprint: true
         }
         
         success {
