@@ -6,17 +6,16 @@ pipeline {
     }
 
     tools {
-        nodejs "Jenkins NodeJs"
+        nodejs "My_NodeJS_Jenkins"
     }    
     
     stages {        
         stage('Run Newman Tests') {
             steps {
-                sh '''
-                newman run "Hello World.postman_collection.json" \
-                    --reporters cli,junit,htmlextra \
-                    --reporter-junit-export junit-report.xml \
-                    --reporter-htmlextra-export htmlextra-report.html
+                '''
+                node -v
+                newman -v
+                newman run "testData\HW 20.1 Jenkins.postman_collection.json" -d "testData\testJsonData.json" -r "cli,junit,htmlextra" --reporter-junit-export "newman_results\JUnit_TestReport" --reporter-htmlextra-export "newman_results\HTML_TestReport.html"
                 '''
             }
         }
@@ -24,13 +23,13 @@ pipeline {
     
     post {
         always {
-            // Публікація JUnit звіту
-            junit 'junit-report.xml'
+            // Palishing of JUnit report
+            junit 'newman_results\JUnit_TestReport'
             
-            // Архівування HTML звіту як артефакту
-            archiveArtifacts artifacts: 'htmlextra-report.html', fingerprint: true
+            // Archiving an HTML report as an artifact
+            archiveArtifacts artifacts: 'newman_results\HTML_TestReport.html', fingerprint: true
             
-            // Публікація HTML звіту (опціонально)
+            // Publishing an HTML report (optional)
             publishHTML([
                 allowMissing: false,
                 alwaysLinkToLastBuild: true,
@@ -42,11 +41,11 @@ pipeline {
         }
         
         success {
-            echo 'Всі тести успішно пройдені!'
+            echo 'All tests have been successfully passed!'
         }
         
         failure {
-            echo 'Тести завершилися з помилками. Перевірте звіти для деталей.'
+            echo 'Tests failed with errors. Check the reports for details.'
         }
     }
 }
