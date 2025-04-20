@@ -14,7 +14,7 @@ pipeline {
             steps {
                 powershell '''
                     newman run "testData/HW 20.1 Jenkins.postman_collection.json" `
-                       -d "testData/testCsvData.csv" `
+                       -d "testData/testJsonData.json" `
                        -r "cli,junit,htmlextra" `
                        --reporter-junit-export "newman_results/JUnit_TestReport" `
                        --reporter-htmlextra-export "newman_results/HTML_TestReport.html"
@@ -37,7 +37,7 @@ pipeline {
                 keepAll: true,
                 reportDir: '.',
                 reportFiles: 'newman_results/HTML_TestReport.html',
-                reportName: 'HTML_TestReport.html'
+                reportName: 'Newman HTML Report'
             ])
 
             // Archiving an HTML report as an artifact
