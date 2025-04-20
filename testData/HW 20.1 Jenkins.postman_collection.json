@@ -1,0 +1,248 @@
+{
+	"info": {
+		"_postman_id": "ede3c99a-bfb0-4483-ae14-53aa6ddb5a3f",
+		"name": "HW 20.1 Jenkins",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "41524884",
+		"_collection_link": "https://www.postman.com/hillelqatechpro/workspace/hillel-qauto/collection/41524884-ede3c99a-bfb0-4483-ae14-53aa6ddb5a3f?action=share&source=collection_link&creator=41524884"
+	},
+	"item": [
+		{
+			"name": "Sign_Up",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"const responseData = pm.response.json();\r",
+							"const expectedError = pm.variables.get(\"expectedError\");\r",
+							"\r",
+							"pm.test(\"Sign_Up: Status code should be 400 for invalid data\", function () {\r",
+							"\tpm.response.to.have.status(400);\r",
+							"});\r",
+							"\r",
+							"pm.test(\"Sign_Up: Error message should match expected\", function () {\r",
+							"\tpm.expect(responseData.status).to.equal(\"error\");\r",
+							"\tpm.expect(responseData.message).to.be.a(\"string\");\r",
+							"\r",
+							"\tconst messageLower = responseData.message.toLowerCase();\r",
+							"\tconst expectedErrorLower = expectedError.toLowerCase();\r",
+							"\tpm.expect(messageLower).to.include(expectedErrorLower, `Expected error message to include: ${expectedErrorLower}`);\r",
+							"});\r",
+							"\r",
+							"// pm.setNextRequest(\"Update User Profile\");\r",
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							""
+						],
+						"type": "text/javascript",
+						"packages": {}
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"name\": \"{{iterationName}}\",\r\n    \"lastName\": \"{{iterationLastName}}\",\r\n    \"email\": \"{{iterationEmail}}\",\r\n    \"password\": \"{{iterationPassword}}\",\r\n    \"repeatPassword\": \"{{iterationPassword}}\"\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseUrl}}/auth/signup",
+					"host": [
+						"{{baseUrl}}"
+					],
+					"path": [
+						"auth",
+						"signup"
+					]
+				},
+				"description": "### Sign Up\n\nRegisters a new user in the system.\n\nCreates a user, user profile, and user settings, and authenticates the created user.\n\n- To store the generated unique email in an environment variable for later use in the request, you can use the response data from the `email` field.\n    \n\n#### Request Body\n\n- Type: JSON\n    \n\n| Key | Description |\n| --- | --- |\n| name | The first name of the user |\n| lastName | The last name of the user |\n| email | The email address of the user |\n| password | The password for the user account |\n| repeatPassword | The repeated password for confirmation |\n\n#### Response\n\n- Status: 400\n    \n- Content-Type: application/json\n    \n\n``` json\n{\n    \"status\": \"\",\n    \"message\": \"\"\n}\n\n ```\n\nCreates user, user profile and user settings, and authenticates created user."
+			},
+			"response": []
+		}
+	],
+	"event": [
+		{
+			"listen": "prerequest",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					"const iterationData = pm.iterationData.toObject();\r",
+					"const currentIteration = pm.info.iteration;\r",
+					"\r",
+					"switch (iterationData.environment) {\r",
+					"    case \"PROD\":\r",
+					"        pm.collectionVariables.set(\"baseUrl\", pm.collectionVariables.get(\"prodURL\"));\r",
+					"        console.log(`PROD environment - Iteration: ${currentIteration + 1}`);\r",
+					"        break;\r",
+					"\r",
+					"    case \"DEV\":\r",
+					"        pm.collectionVariables.set(\"baseUrl\", pm.collectionVariables.get(\"devURL\"));\r",
+					"        console.log(`DEV environment - Iteration: ${currentIteration + 1}`);\r",
+					"        break;\r",
+					"\r",
+					"    default:\r",
+					"        throw new Error(\"environment is not defined - please check testData itaration file!\");\r",
+					"}\r",
+					"\r",
+					"pm.variables.set(\"iterationName\", iterationData.iterationName || \"\");\r",
+					"pm.variables.set(\"iterationLastName\", iterationData.iterationLastName || \"\");\r",
+					"pm.variables.set(\"iterationEmail\", iterationData.iterationEmail || \"\");\r",
+					"pm.variables.set(\"iterationPassword\", iterationData.iterationPassword || \"\");\r",
+					"pm.variables.set(\"expectedError\", iterationData.expectedError || \"\");\r",
+					"console.log(\"Test data:\", iterationData);"
+				]
+			}
+		},
+		{
+			"listen": "test",
+			"script": {
+				"type": "text/javascript",
+				"packages": {},
+				"exec": [
+					""
+				]
+			}
+		}
+	],
+	"variable": [
+		{
+			"key": "baseUrl",
+			"value": "string",
+			"type": "string"
+		},
+		{
+			"key": "firstName",
+			"value": "string",
+			"type": "string"
+		},
+		{
+			"key": "lastName",
+			"value": "string",
+			"type": "string"
+		},
+		{
+			"key": "email",
+			"value": "string"
+		},
+		{
+			"key": "password",
+			"value": "string",
+			"type": "string"
+		},
+		{
+			"key": "userId",
+			"value": "integer"
+		},
+		{
+			"key": "newName",
+			"value": "string"
+		},
+		{
+			"key": "newLastName",
+			"value": "string"
+		},
+		{
+			"key": "newDateBirth",
+			"value": "string($date)"
+		},
+		{
+			"key": "newCountry",
+			"value": "string"
+		},
+		{
+			"key": "newPassword",
+			"value": "string"
+		},
+		{
+			"key": "photo",
+			"value": "image(Base64)",
+			"type": "string"
+		},
+		{
+			"key": "newPhoto",
+			"value": "image(Base64)"
+		},
+		{
+			"key": "mileage",
+			"value": "integer"
+		},
+		{
+			"key": "carId",
+			"value": "integer"
+		},
+		{
+			"key": "reportedAtNow",
+			"value": "string($date)"
+		},
+		{
+			"key": "lastExpenseId",
+			"value": "integer"
+		},
+		{
+			"key": "newPhotoFileName",
+			"value": "string"
+		},
+		{
+			"key": "liters",
+			"value": "float"
+		},
+		{
+			"key": "totalCost",
+			"value": "float"
+		},
+		{
+			"key": "newMileage",
+			"value": "integer"
+		},
+		{
+			"key": "newLiters",
+			"value": "float"
+		},
+		{
+			"key": "newTotalCost",
+			"value": "float"
+		},
+		{
+			"key": "tryFirstName",
+			"value": "string"
+		},
+		{
+			"key": "tryLastName",
+			"value": "string"
+		},
+		{
+			"key": "tryEmail",
+			"value": "string"
+		},
+		{
+			"key": "tryPassword",
+			"value": "string"
+		},
+		{
+			"key": "devURL",
+			"value": "https://qauto2.forstudy.space/api",
+			"type": "string"
+		},
+		{
+			"key": "prodURL",
+			"value": "https://qauto.forstudy.space/api",
+			"type": "string"
+		}
+	]
+}

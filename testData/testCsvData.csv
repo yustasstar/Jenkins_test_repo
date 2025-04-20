@@ -1,0 +1,41 @@
+request,iterationName,iterationLastName,iterationEmail,iterationPassword,expectedError,environment
+"Sign_Up - Name validation - Empty String",,TestLastName,valid@example.com,ValidPass123!,"""name"" is not allowed to be empty",PROD
+"Sign_Up - Name validation - Single Character",A,TestLastName,valid@example.com,ValidPass123!,Name has to be from 2 to 20 characters long,PROD
+"Sign_Up - Name validation - Too Long",ThisNameIsWayTooLongToBeValid,TestLastName,valid@example.com,ValidPass123!,Name has to be from 2 to 20 characters long,PROD
+"Sign_Up - Name validation - Non-Latin Characters",Ім'я,TestLastName,valid@example.com,ValidPass123!,Name is invalid,PROD
+"Sign_Up - Name validation - Non-String(Number)",123,TestLastName,valid@example.com,ValidPass123!,Name is invalid,PROD
+"Sign_Up - LastName validation - Empty String",TestName,,valid@example.com,ValidPass123!,"""lastName"" is not allowed to be empty",PROD
+"Sign_Up - LastName validation - Single Character",TestName,B,valid@example.com,ValidPass123!,Last name has to be from 2 to 20 characters long,PROD
+"Sign_Up - LastName validation - Too Long",TestName,ThisLastNameIsWayTooLongToBeValid,valid@example.com,ValidPass123!,Last name has to be from 2 to 20 characters long,PROD
+"Sign_Up - LastName validation - Non-Latin Characters",TestName,Прізвище,valid@example.com,ValidPass123!,Last name is invalid,PROD
+"Sign_Up - LastName validation - Non-String(Number)",TestName,456,valid@example.com,ValidPass123!,Last name is invalid,PROD
+"Sign_Up - Email validation - Empty String",TestName,TestLastName,,ValidPass123!,"""email"" is not allowed to be empty",PROD
+"Sign_Up - Email validation - Invalid Format",TestName,TestLastName,user,ValidPass123!,Email is incorrect,PROD
+"Sign_Up - Email validation - Missing Domain",TestName,TestLastName,user@,ValidPass123!,Email is incorrect,PROD
+"Sign_Up - Email validation - Space in Email",TestName,TestLastName,"user name@example.com",ValidPass123!,Email is incorrect,PROD
+"Sign_Up - Password validation - Too Short",TestName,TestLastName,valid@example.com,short,Password has to be from 8 to 15 characters long,PROD
+"Sign_Up - Password validation - Too Long",TestName,TestLastName,valid@example.com,ThisPasswordIsTooLong123!,Password has to be from 8 to 15 characters long,PROD
+"Sign_Up - Password validation - No Digits",TestName,TestLastName,valid@example.com,NoDigitsHere!,contain at least one integer,PROD
+"Sign_Up - Password validation - No Uppercase",TestName,TestLastName,valid@example.com,nouppercase123!,one capital,PROD
+"Sign_Up - Password validation - No Lowercase",TestName,TestLastName,valid@example.com,NOLOWERCASE123!,one small letter,PROD
+"Sign_Up - Password validation - Empty String",TestName,TestLastName,valid@example.com,,"""password"" is not allowed to be empty",PROD
+"Sign_Up - Name validation - Empty String",,TestLastName,valid@example.com,ValidPass123!,"""name"" is not allowed to be empty",DEV
+"Sign_Up - Name validation - Single Character",A,TestLastName,valid@example.com,ValidPass123!,Name has to be from 2 to 20 characters long,DEV
+"Sign_Up - Name validation - Too Long",ThisNameIsWayTooLongToBeValid,TestLastName,valid@example.com,ValidPass123!,Name has to be from 2 to 20 characters long,DEV
+"Sign_Up - Name validation - Non-Latin Characters",Ім'я,TestLastName,valid@example.com,ValidPass123!,Name is invalid,DEV
+"Sign_Up - Name validation - Non-String(Number)",123,TestLastName,valid@example.com,ValidPass123!,Name is invalid,DEV
+"Sign_Up - LastName validation - Empty String",TestName,,valid@example.com,ValidPass123!,"""lastName"" is not allowed to be empty",DEV
+"Sign_Up - LastName validation - Single Character",TestName,B,valid@example.com,ValidPass123!,Last name has to be from 2 to 20 characters long,DEV
+"Sign_Up - LastName validation - Too Long",John,ThisLastNameIsWayTooLongToBeValid,valid@example.com,ValidPass123!,Last name has to be from 2 to 20 characters long,DEV
+"Sign_Up - LastName validation - Non-Latin Characters",TestName,Прізвище,valid@example.com,ValidPass123!,Last name is invalid,DEV
+"Sign_Up - LastName validation - Non-String(Number)",TestName,456,valid@example.com,ValidPass123!,Last name is invalid,DEV
+"Sign_Up - Email validation - Empty String",TestName,TestLastName,,ValidPass123!,"""email"" is not allowed to be empty",DEV
+"Sign_Up - Email validation - Invalid Format",TestName,TestLastName,user,ValidPass123!,Email is incorrect,DEV
+"Sign_Up - Email validation - Missing Domain",TestName,TestLastName,user@,ValidPass123!,Email is incorrect,DEV
+"Sign_Up - Email validation - Space in Email",TestName,TestLastName,"user name@example.com",ValidPass123!,Email is incorrect,DEV
+"Sign_Up - Password validation - Too Short",TestName,TestLastName,valid@example.com,short,Password has to be from 8 to 15 characters long,DEV
+"Sign_Up - Password validation - Too Long",TestName,TestLastName,valid@example.com,ThisPasswordIsTooLong123!,Password has to be from 8 to 15 characters long,DEV
+"Sign_Up - Password validation - No Digits",TestName,TestLastName,valid@example.com,NoDigitsHere!,contain at least one integer,DEV
+"Sign_Up - Password validation - No Uppercase",TestName,TestLastName,valid@example.com,nouppercase123!,one capital,DEV
+"Sign_Up - Password validation - No Lowercase",TestName,TestLastName,valid@example.com,NOLOWERCASE123!,one small letter,DEV
+"Sign_Up - Password validation - Empty String",TestName,TestLastName,valid@example.com,,"""password"" is not allowed to be empty",DEV

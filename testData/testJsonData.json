@@ -1,0 +1,354 @@
+[
+    {
+        "request": "Sign_Up - Name validation - Empty String",
+        "iterationName": "",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "\"name\" is not allowed to be empty",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Name validation - Single Character",
+        "iterationName": "A",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Name has to be from 2 to 20 characters long",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Name validation - Too Long",
+        "iterationName": "ThisNameIsWayTooLongToBeValid",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Name has to be from 2 to 20 characters long",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Name validation - Non-Latin Characters",
+        "iterationName": "Ім'я",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Name is invalid",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Name validation - Non-String(Number)",
+        "iterationName": 123,
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Name is invalid",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Empty String",
+        "iterationName": "TestName",
+        "iterationLastName": "",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "\"lastName\" is not allowed to be empty",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Single Character",
+        "iterationName": "TestName",
+        "iterationLastName": "B",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Last name has to be from 2 to 20 characters long",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Too Long",
+        "iterationName": "TestName",
+        "iterationLastName": "ThisLastNameIsWayTooLongToBeValid",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Last name has to be from 2 to 20 characters long",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Non-Latin Characters",
+        "iterationName": "TestName",
+        "iterationLastName": "Прізвище",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Last name is invalid",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Non-String(Number)",
+        "iterationName": "TestName",
+        "iterationLastName": 456,
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Last name is invalid",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Email validation - Empty String",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "\"email\" is not allowed to be empty",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Email validation - Invalid Format",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "user",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Email is incorrect",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Email validation - Missing Domain",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "user@",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Email is incorrect",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Email validation - Space in Email",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "user name@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Email is incorrect",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Password validation - Too Short",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "short",
+        "expectedError": "Password has to be from 8 to 15 characters long",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Password validation - Too Long",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ThisPasswordIsTooLong123!",
+        "expectedError": "Password has to be from 8 to 15 characters long",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Password validation - No Digits",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "NoDigitsHere!",
+        "expectedError": "contain at least one integer",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Password validation - No Uppercase",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "nouppercase123!",
+        "expectedError": "one capital",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Password validation - No Lowercase",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "NOLOWERCASE123!",
+        "expectedError": "one small letter",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Password validation - Empty String",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "",
+        "expectedError": "\"password\" is not allowed to be empty",
+        "environment": "PROD"
+    },
+    {
+        "request": "Sign_Up - Name validation - Empty String",
+        "iterationName": "",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "\"name\" is not allowed to be empty",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Name validation - Single Character",
+        "iterationName": "A",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Name has to be from 2 to 20 characters long",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Name validation - Too Long",
+        "iterationName": "ThisNameIsWayTooLongToBeValid",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Name has to be from 2 to 20 characters long",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Name validation - Non-Latin Characters",
+        "iterationName": "Ім'я",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Name is invalid",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Name validation - Non-String(Number)",
+        "iterationName": 123,
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Name is invalid",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Empty String",
+        "iterationName": "TestName",
+        "iterationLastName": "",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "\"lastName\" is not allowed to be empty",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Single Character",
+        "iterationName": "TestName",
+        "iterationLastName": "B",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Last name has to be from 2 to 20 characters long",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Too Long",
+        "iterationName": "John",
+        "iterationLastName": "ThisLastNameIsWayTooLongToBeValid",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Last name has to be from 2 to 20 characters long",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Non-Latin Characters",
+        "iterationName": "TestName",
+        "iterationLastName": "Прізвище",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Last name is invalid",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - LastName validation - Non-String(Number)",
+        "iterationName": "TestName",
+        "iterationLastName": 456,
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Last name is invalid",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Email validation - Empty String",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "\"email\" is not allowed to be empty",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Email validation - Invalid Format",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "user",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Email is incorrect",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Email validation - Missing Domain",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "user@",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Email is incorrect",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Email validation - Space in Email",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "user name@example.com",
+        "iterationPassword": "ValidPass123!",
+        "expectedError": "Email is incorrect",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Password validation - Too Short",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "short",
+        "expectedError": "Password has to be from 8 to 15 characters long",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Password validation - Too Long",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "ThisPasswordIsTooLong123!",
+        "expectedError": "Password has to be from 8 to 15 characters long",
+        "environment": "DEV"
+    },
+
+    {
+        "request": "Sign_Up - Password validation - No Uppercase",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "nouppercase123!",
+        "expectedError": "one capital",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Password validation - No Lowercase",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "NOLOWERCASE123!",
+        "expectedError": "one small letter",
+        "environment": "DEV"
+    },
+    {
+        "request": "Sign_Up - Password validation - Empty String",
+        "iterationName": "TestName",
+        "iterationLastName": "TestLastName",
+        "iterationEmail": "valid@example.com",
+        "iterationPassword": "",
+        "expectedError": "\"password\" is not allowed to be empty",
+        "environment": "DEV"
+    }
+]

@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<testsuites name="HW 20.1 Jenkins" tests="39" time="2.508">
+  <testsuite name="Sign_Up" id="ea9e684c-eeb2-4f7a-b944-b1f763d66262" timestamp="2025-04-20T19:55:05.746Z" tests="2" failures="0" errors="0" time="0.064">
+    <testcase name="Sign_Up: Status code should be 400 for invalid data" time="0.053" classname="SignUp"/>
+    <testcase name="Sign_Up: Error message should match expected" time="0.053" classname="SignUp"/>
+  </testsuite>
+</testsuites>
