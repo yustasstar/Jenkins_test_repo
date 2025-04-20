@@ -1,0 +1,52 @@
+pipeline {
+    agent any
+    
+    triggers {
+        githubPush()
+    }
+
+    tools {
+        nodejs "Jenkins NodeJs"
+    }    
+    
+    stages {        
+        stage('Run Newman Tests') {
+            steps {
+                sh '''
+                newman run "Hello World.postman_collection.json" \
+                    --reporters cli,junit,htmlextra \
+                    --reporter-junit-export junit-report.xml \
+                    --reporter-htmlextra-export htmlextra-report.html
+                '''
+            }
+        }
+    }
+    
+    post {
+        always {
+            // Публікація JUnit звіту
+            junit 'junit-report.xml'
+            
+            // Архівування HTML звіту як артефакту
+            archiveArtifacts artifacts: 'htmlextra-report.html', fingerprint: true
+            
+            // Публікація HTML звіту (опціонально)
+            publishHTML([
+                allowMissing: false,
+                alwaysLinkToLastBuild: true,
+                keepAll: true,
+                reportDir: '.',
+                reportFiles: 'htmlextra-report.html',
+                reportName: 'Newman HTML Report'
+            ])
+        }
+        
+        success {
+            echo 'Всі тести успішно пройдені!'
+        }
+        
+        failure {
+            echo 'Тести завершилися з помилками. Перевірте звіти для деталей.'
+        }
+    }
+}
